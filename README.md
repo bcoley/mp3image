@@ -11,14 +11,14 @@ Addimage - a program to add artwork to mp3 files.
 
 Parameters:
 
-[-f] <list of mp3 files>
+[-f] {list of mp3 files}
 	If other options are specified, use -f to identify the mp3 files.
 
 Optional parms:
 
--i <number of images to add to each mp3 file>
+-i {number of images to add to each mp3 file}
 
--t <terms to add to search>
+-t {terms to add to search}
 	For example, if your mp3 files are named by song title,
 	use this parm to specify artist or to otherwise control the search.
 
@@ -26,7 +26,7 @@ Optional parms:
 	Use terms only, that is, do not search by mp3 file titles.
 	If this option is specified, -t is required.
  
--a <list of artwork files or urls for artwork>
+-a {list of artwork files or urls for artwork}
 	If these do not match the number of input files,
 	they will be reused as needed.
 
