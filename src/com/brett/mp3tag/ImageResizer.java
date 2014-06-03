@@ -6,48 +6,48 @@ import java.awt.image.BufferedImage;
 
 public class ImageResizer {
 
-	public boolean isResizeNecessary(Dimension imgSize, Dimension boundary) {
+	public boolean isResizeNecessary(Dimension imageSize, Dimension boundary) {
 
-		int original_width = imgSize.width;
-		int original_height = imgSize.height;
-		int bound_width = boundary.width;
-		int bound_height = boundary.height;
+		int originalWidth = imageSize.width;
+		int originalHeight = imageSize.height;
+		int boundaryWidth = boundary.width;
+		int boundaryHeight = boundary.height;
 
-		if (original_width > bound_width) {
+		if (originalWidth > boundaryWidth) {
 			return true;
 		}
-		if (original_height > bound_height) {
+		if (originalHeight > boundaryHeight) {
 			return true;
 		}
 		return false;
 	}
 
-	public Dimension getScaledDimension(Dimension imgSize, Dimension boundary) {
+	public Dimension getScaledDimension(Dimension imageSize, Dimension boundary) {
 
-		int original_width = imgSize.width;
-		int original_height = imgSize.height;
-		int bound_width = boundary.width;
-		int bound_height = boundary.height;
-		int new_width = original_width;
-		int new_height = original_height;
+		int originalWidth = imageSize.width;
+		int originalHeight = imageSize.height;
+		int boundaryWidth = boundary.width;
+		int boundaryHeight = boundary.height;
+		int newWidth = originalWidth;
+		int newHeight = originalHeight;
 
 		// first check if we need to scale width
-		if (original_width > bound_width) {
+		if (originalWidth > boundaryWidth) {
 			//scale width to fit
-			new_width = bound_width;
+			newWidth = boundaryWidth;
 			//scale height to maintain aspect ratio
-			new_height = (new_width * original_height) / original_width;
+			newHeight = (newWidth * originalHeight) / originalWidth;
 		}
 
 		// then check if we need to scale even with the new height
-		if (new_height > bound_height) {
+		if (newHeight > boundaryHeight) {
 			//scale height to fit instead
-			new_height = bound_height;
+			newHeight = boundaryHeight;
 			//scale width to maintain aspect ratio
-			new_width = (new_height * original_width) / original_height;
+			newWidth = (newHeight * originalWidth) / originalHeight;
 		}
 
-		return new Dimension(new_width, new_height);
+		return new Dimension(newWidth, newHeight);
 	}
 
 	public BufferedImage resizeImage(BufferedImage originalImage, Dimension boundary)

@@ -22,7 +22,9 @@ import org.jaudiotagger.tag.images.StandardArtwork;
 
 public class AddImage {
 
-	Dimension BOUNDARY = new Dimension(640, 480);
+	public static final String ADD_IMAGE_TEMP_JPG = "AddImageTemp.jpg";
+
+    Dimension BOUNDARY = new Dimension(640, 480);
 
 	ImageUrlDogpileFetcher urlFetcher;
 	
@@ -271,9 +273,9 @@ public class AddImage {
 		
 		try {
 			// TODO: find a way without temp file.
-			File tempFile = new File("AddImageTemp.jpg");
+			File tempFile = new File(ADD_IMAGE_TEMP_JPG);
 			ImageIO.write(image, "jpg", tempFile);
-			artwork = readArtworkFromFile("AddImageTemp.jpg");
+			artwork = readArtworkFromFile(ADD_IMAGE_TEMP_JPG);
 			artwork.setWidth(image.getWidth());
 			artwork.setHeight(image.getHeight());
 			tempFile = null;
@@ -328,7 +330,6 @@ public class AddImage {
 	}
 
 	private void setArtworkFromUrls(String mp3FileName, List<String> terms, List<String> urls) {
-		// TODO: process by number of images
 		int count = 0;
 		for (String url: urls) {
 			Artwork artwork = readArtworkFromUrl(url);

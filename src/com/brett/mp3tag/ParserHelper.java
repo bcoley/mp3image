@@ -10,10 +10,8 @@ public class ParserHelper {
 		String[] parts = urlString.split("du=");
 		if (parts.length > 1) {
 			String parts2[] = parts[1].split("&ru");
-			if (parts2.length > 1) {
-				if (isStringJpgUrl(parts2[0])) {
+			if ((parts2.length > 1) && isStringJpgUrl(parts2[0])) {
 					result =  decodeURL(parts2[0]);
-				}
 			}
 		}
 		
